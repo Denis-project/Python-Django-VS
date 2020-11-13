@@ -1,13 +1,36 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - My Django Application</title>
-    {% load staticfiles %}
+    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+
+    {# Блок разделения страницы #}
+        <style type="text/css">    
+           * { margin: 0; padding: 0; }
+           p { padding: 50px; }
+           #left { position: absolute; left: 0; top: 120; width: 50%; }
+           #right { position: absolute; right: 0; top: 100; width: 50%; text-align: center; } 
+        </style>
+    {# end #}
+
+    {# Линия #}
+    <style>
+        .vl {
+            border-left: 8px solid #333333;
+            height: 656px;
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            margin-left: -3px;
+            top: 0;
+            }
+    </style>
+    {# end #}
 </head>
 
 <body>
@@ -24,8 +47,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'about' %}">DataBase</a></li>
+                    <li><a href="{% url 'contact' %}">101</a></li>
                 </ul>
                 {% include 'app/loginpartial.html' %}
             </div>
@@ -34,16 +57,30 @@
 
     <div class="container body-content">
 {% block content %}{% endblock %}
-        <hr/>
-        <footer>
-            <p>&copy; {{ year }} - My Django Application</p>
-        </footer>
-    </div>
+
 
     <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
     <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
 {% block scripts %}{% endblock %}
+
+    {# Разделение страницы #}
+        <div id="left">
+        
+        </div>
+              
+        <div id="right">
+            <h2>Sasha</h2>
+            <h2>Denis</h2>
+            <h2>Ruslan</h2>
+            <h2>Vladimir</h2>
+            <h2>Andrey</h2>
+        </div>             
+    {# end #}
+
+    {# Линия #}
+    <div class="vl"></div>
+    {# end #}
 
 </body>
 </html>
