@@ -7,30 +7,7 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
-    <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
-
-    {# Блок разделения страницы #}
-        <style type="text/css">    
-           * { margin: 0; padding: 0; }
-           p { padding: 50px; }
-           #left { position: absolute; left: 0; top: 120; width: 50%; }
-           #right { position: absolute; right: 0; top: 100; width: 50%; text-align: center; } 
-        </style>
-    {# end #}
-
-    {# Линия #}
-    <style>
-        .vl {
-            border-left: 8px solid #333333;
-            height: 656px;
-            position: absolute;
-            left: 50%;
-            right: 50%;
-            margin-left: -3px;
-            top: 0;
-            }
-    </style>
-    {# end #}
+    <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>    
 </head>
 
 <body>
@@ -64,23 +41,6 @@
     <script src="{% static 'app/scripts/respond.js' %}"></script>
 {% block scripts %}{% endblock %}
 
-    {# Разделение страницы #}
-        <div id="left">
-        
-        </div>
-              
-        <div id="right">
-            <h2>Sasha</h2>
-            <h2>Denis</h2>
-            <h2>Ruslan</h2>
-            <h2>Vladimir</h2>
-            <h2>Andrey</h2>
-        </div>             
-    {# end #}
-
-    {# Линия #}
-    <div class="vl"></div>
-    {# end #}
 
 </body>
 </html>
