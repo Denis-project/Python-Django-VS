@@ -23,3 +23,4 @@ class PersonForm(ModelForm):
     class meta:
         model = Person
         fields = ['name', 'surname']
+        

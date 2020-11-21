@@ -72,3 +72,4 @@ def view(request):
     }
 
     return render(request, 'app/view.html', data)
+    
