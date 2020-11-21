@@ -26,6 +26,7 @@
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">DataBase</a></li>
                     <li><a href="{% url 'contact' %}">101</a></li>
+                    <li><a href="{% url 'view' %}">view</a></li>
                 </ul>
                 {% include 'app/loginpartial.html' %}
             </div>
@@ -40,7 +41,6 @@
     <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
 {% block scripts %}{% endblock %}
-
 
 </body>
 </html>
