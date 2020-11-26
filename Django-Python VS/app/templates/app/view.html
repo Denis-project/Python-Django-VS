@@ -6,12 +6,11 @@
         <h1>Форма по добавлению людей</h1>
         <form method="post">
             {% csrf_token %}
-            {{ form }}
-
-            <input type="text" placeholder="Фамилия" class="form-control"><br>
-            <input type="text" placeholder="Имя" class="form-control"><br>
+             {{ form.name }}<br>
+             {{ form.surname }}<br>
             <button class="btn" type="submit">Добавить</button>            
         </form>
     </div>
+
 {% endblock %}
 

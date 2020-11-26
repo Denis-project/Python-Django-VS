@@ -23,24 +23,31 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">DataBase</a></li>
-                    <li><a href="{% url 'contact' %}">101</a></li>
                     <li><a href="{% url 'view' %}">view</a></li>
                 </ul>
                 {% include 'app/loginpartial.html' %}
             </div>
         </div>
     </div>
-
     <div class="container body-content">
+
+        {% for el in pn %}
+            <div class="alert">
+                <h3>{{ el.name }}</h3>
+            </div>  
+        {% endfor %}
+
 {% block content %}{% endblock %}
 
 
     <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
     <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
+
+
+
 {% block scripts %}{% endblock %}
+
 
 </body>
 </html>

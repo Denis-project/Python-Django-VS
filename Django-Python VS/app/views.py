@@ -5,8 +5,8 @@ Definition of views.
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
-from .models import Person
 from .forms import PersonForm
+from .models import Person
 
 def home(request):
     """Renders the home page."""
@@ -49,27 +49,35 @@ def about(request):
 # БД 
 
 # получение данных из бд
-def index(request):
+def view(request):
     people = Person.objects.all()
-    return render(request, "index.html", {"people": people})
+    return render(request, "view.html", {"people": people})
  
 # сохранение данных в бд
 def create(request):
     if request.method == "POST":
-        tom = Person()
+        tom = Person()        
         tom.name = request.POST.get("name")
-        tom.age = request.POST.get("age")
+        tom.surname = request.POST.get("surname")
         tom.save()
     return HttpResponseRedirect("/")
 
 
 # передача объектов в views.html
 def view(request):
+    if request.method == 'POST':
+        form = PersonForm(request.POST)
+        if form.is_valid():
+            form.save()
+
     form = PersonForm()
 
     data = {
         'form':form
     }
 
-    return render(request, 'app/view.html', data)
-    
+    return render(request, 'app/view.html', data )
+
+def layout(request):
+    pn = Person.objects.all() 
+    return render(request, 'app/layout.html', {'pn': pn})
