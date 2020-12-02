@@ -12,8 +12,9 @@ from app import forms, views
 urlpatterns = [
     path('', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
-    path('view/', views.view, name='view'),
+    path('person/', views.Person, name='person'),
     path('about/', views.about, name='about'),
+    path('view/', views.view, name='view'),
     path('login/',
          LoginView.as_view
          (
@@ -28,11 +29,12 @@ urlpatterns = [
          name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
+    path('', persons_list, name='persons_list'),
+    
 ]
 
 
 
-# БД
 
 
 

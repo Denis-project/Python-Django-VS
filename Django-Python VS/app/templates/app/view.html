@@ -1,5 +1,5 @@
 {% extends "app/layout.html" %}
-{% block title %} Форма по добавлению людей {% endblock %}
+
 
 {% block content %}
     <div class="features">
@@ -11,6 +11,23 @@
             <button class="btn" type="submit">Добавить</button>            
         </form>
     </div>
+
+
+    <div>
+		<div class="grid-x">
+		    {% for preson in presons %}
+			    <div class="cell small-12 medium-3 large-3">
+				      <div class="card">
+					        <div class="card-section">
+					        	<h4>{{ preson.name }}</h4>
+					        	<h4>{{ preson.surname }}</h4>
+					        </div>
+				      </div>
+			    </div>
+			{% endfor %}
+		</div>
+	</div>
+
 
 {% endblock %}
 

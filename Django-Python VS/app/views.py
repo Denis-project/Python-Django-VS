@@ -3,10 +3,12 @@ Definition of views.
 """
 
 from datetime import datetime
-from django.shortcuts import render
+
 from django.http import HttpRequest
+from django.shortcuts import render
 from .forms import PersonForm
 from .models import Person
+
 
 def home(request):
     """Renders the home page."""
@@ -16,6 +18,17 @@ def home(request):
         'app/index.html',
         {
             'title':'Home Page',
+            'year':datetime.now().year,
+        }
+    )
+def view(request):
+    """Renders the home page."""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/view.html',
+        {
+            'title':'View',
             'year':datetime.now().year,
         }
     )
@@ -47,24 +60,15 @@ def about(request):
     )
 
 # БД 
-
 # получение данных из бд
-def view(request):
-    people = Person.objects.all()
-    return render(request, "view.html", {"people": people})
+def persons_list(request):
+    persons = Person.objects.all()
+    return render(request, "tamplates/view.html", context = {'persons': persons})
  
-# сохранение данных в бд
-def create(request):
-    if request.method == "POST":
-        tom = Person()        
-        tom.name = request.POST.get("name")
-        tom.surname = request.POST.get("surname")
-        tom.save()
-    return HttpResponseRedirect("/")
 
 
 # передача объектов в views.html
-def view(request):
+def persons_list(request):
     if request.method == 'POST':
         form = PersonForm(request.POST)
         if form.is_valid():
@@ -78,6 +82,4 @@ def view(request):
 
     return render(request, 'app/view.html', data )
 
-def layout(request):
-    pn = Person.objects.all() 
-    return render(request, 'app/layout.html', {'pn': pn})
+
