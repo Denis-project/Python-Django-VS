@@ -61,14 +61,14 @@ def about(request):
 
 # БД 
 # получение данных из бд
-def persons_list(request):
+def view(request):
     persons = Person.objects.all()
     return render(request, "tamplates/view.html", context = {'persons': persons})
  
 
 
 # передача объектов в views.html
-def persons_list(request):
+def view(request):
     if request.method == 'POST':
         form = PersonForm(request.POST)
         if form.is_valid():
