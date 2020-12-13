@@ -1,10 +1,11 @@
 """
 Definition of views.
 """
-
+from django.views.generic.list import ListView
 from datetime import datetime
-
+from django.http import HttpResponse
 from django.http import HttpRequest
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import PersonForm
 from .models import Person
@@ -59,27 +60,39 @@ def about(request):
         }
     )
 
-# БД 
+
+
+# # def Get_person(request):
+# #     piple = Person.objects.all()
+# #     return render(request, 'app/view.html', {"piple": piple} )
+
+
+
+# def view(request):
+#     if request.method == 'POST':
+#         form = PersonForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+
+#     form = PersonForm()
+
+#     data = {
+#         'form':form
+#     }
+
+#     return render(request, 'app/view.html', data )
+
+
 # получение данных из бд
-def Person_list(request):
-    persons = Person.objects.all()
-    return render(request, "tamplates/view.html", context = {'persons': persons})
+def view(request):
+    people = Person.objects.all()
+    return render(request, "app/view.html", {"people": people})
  
-
-
-# передача объектов в views.html
-def Person_list(request):
-    if request.method == 'POST':
-        form = PersonForm(request.POST)
-        if form.is_valid():
-            form.save()
-
-    form = PersonForm()
-
-    data = {
-        'form':form
-    }
-
-    return render(request, 'app/view.html', data )
-
-
+# сохранение данных в бд
+def create(request):
+    if request.method == "POST":
+        tom = Person()
+        tom.name = request.POST.get("name")
+        tom.surname = request.POST.get("surname")
+        tom.save()
+    return HttpResponseRedirect("/")

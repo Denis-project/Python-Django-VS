@@ -2,34 +2,41 @@
 
 
 {% block content %}
-    <div class="features">
+    <!-- <div class="features">
         <h1>Форма по добавлению людей</h1>
-        <form method="post">
+        <form method="POST">
             {% csrf_token %}
              {{ form.name }}<br>
              {{ form.surname }}<br>
             <button class="btn" type="submit">Добавить</button>            
         </form>
-    </div>
-
-
-    <div>
-		<div class="grid-x">
-		    {% for preson in presons %}
-			    <div class="cell small-12 medium-3 large-3">
-				      <div class="card">
-					        <div class="card-section">
-					        	<h4>{{ preson.name }}</h4>
-					        	<h4>{{ preson.surname }}</h4>
-					        </div>
-				      </div>
-			    </div>
-			{% endfor %}
-		</div>
-	</div>
-
-
+    </div> -->
 
 	
+	
+
+	<form method="POST" action="create/">
+        {% csrf_token %}
+        <p>
+            <label>Введите имя</label><br>
+            <input type="text" name="name" />
+        </p>
+        <p>
+            <label>Введите Фамилию</label><br>
+            <input type="text" name="surname" />
+        </p>
+		<button class="btn" type="submit">Добавить</button> 
+    </form>
+    {% if people.count > 0 %}
+    <h2>Список пользователей</h2>
+    <table>
+        <tr><th>Id</th><th>Имя</th><th>Фамилия</th></tr>
+        {% for person in people %}
+        <tr><td>{{ person.id }}</td><td>{{ person.name }}</td><td>{{ person.surname }}</td></tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+
 {% endblock %}
 

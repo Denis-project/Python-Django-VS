@@ -23,7 +23,7 @@ class PersonForm(ModelForm):
     class Meta:
         model = Person
         fields = ['name', 'surname']
-# ПРОБНИК
+
         widgets = {
             "name": TextInput(attrs={
                 'class': 'form-control',
