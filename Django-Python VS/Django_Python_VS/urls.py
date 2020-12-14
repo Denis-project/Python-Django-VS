@@ -8,8 +8,6 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from app import forms, views
 
-
-
 urlpatterns = [
     path('', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
@@ -32,10 +30,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', views.Get_person, name='get_person'),
     # path('', views.Create_person, name='create_person'),
-    
     path('', views.view),
     path('create/', views.create),
-
 ]
 
 

@@ -6815,7 +6815,11 @@ td.visible-print {
   }
 }
 
-
+.style_form {
+  right: 20px;
+  background-color: aqua;
+  text-align: center;
+}
 
 
 
