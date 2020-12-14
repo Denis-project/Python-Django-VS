@@ -5,13 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-chrome",
+            "name": "Python: Django",
+            "type": "python",
             "request": "launch",
-            "name": "Open layout.html",
-            "file": "d:\\Django-Python\\Django-Python VS\\Django-Python VS\\app\\templates\\app\\layout.html"
+            "program": "D:\\Django-Python\\Django-Python VS\\Django-Python VS\\manage.py",
+            "args": [
+                "runserver"
+            ],
+            "django": true
         }
-
-        
-
     ]
 }

@@ -1,0 +1,42 @@
+{% extends "app/layout.html" %}
+
+
+{% block content %}
+    <!-- <div class="features">
+        <h1>Форма по добавлению людей</h1>
+        <form method="POST">
+            {% csrf_token %}
+             {{ form.name }}<br>
+             {{ form.surname }}<br>
+            <button class="btn" type="submit">Добавить</button>            
+        </form>
+    </div> -->
+
+	
+	
+
+	<form method="POST" action="create/">
+        {% csrf_token %}
+        <p>
+            <label>Введите имя</label><br>
+            <input type="text" name="name" />
+        </p>
+        <p>
+            <label>Введите Фамилию</label><br>
+            <input type="text" name="surname" />
+        </p>
+		<button class="btn" type="submit">Добавить</button> 
+    </form>
+    {% if people.count > 0 %}
+    <h2>Список пользователей</h2>
+    <table>
+        <tr><th>Id</th><th>Имя</th><th>Фамилия</th></tr>
+        {% for person in people %}
+        <tr><td>{{ person.id }}</td><td>{{ person.name }}</td><td>{{ person.surname }}</td></tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+
+{% endblock %}
+
