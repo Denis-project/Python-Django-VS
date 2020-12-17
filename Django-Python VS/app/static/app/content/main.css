@@ -17,8 +17,17 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+.containers {
+    width: 100%;
+    height: 400px;
+    max-width: 1367px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: aqua;
+}
+
 .style_form {
-    text-align: center;
+    text-align: right;
 }
 
 .label {

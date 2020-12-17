@@ -3,18 +3,25 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="app/main.css"> 
+	<link rel="stylesheet" href="Django-Python VS/app/static/app/content/main.css"> 
 	<title>{{ title }} - My Django </title>
 	{% load static %}
 </head>
 
+<header>
+	<div class="containers">
+		
+	</div>
+</header>
+
 <div class="style_form">
+
 	<form method="POST" action="create/">
-        {% csrf_token %}
+		{% csrf_token %}
         <p>
             <label class="label">Введите имя</label><br>
             <input type="text" name="name" />
-        </p>
+		</p>
         <p>
             <label class="label">Введите Фамилию</label><br>
             <input type="text" name="surname" />
@@ -22,16 +29,20 @@
 		<div class="button">
 			<input type="submit" value="Добавить" >
 		</div>
-    </form>
-	{% if people.count > 0 %}
-		<h2>Список пользователей</h2>
-		<div>
-			<tr><th>Имя</th></tr>
-			{% for person in people %}
-			<tr><td>{{ person.name }}</td></tr>
-			{% endfor %}
-		</div>
-    {% endif %}
+	</form>
+
+	<div class="righer">
+		{% if people.count > 0 %}
+			<h2>Список пользователей</h2>
+
+			<div>
+				<h3>Имя</h3>
+				{% for person in people %}
+				<ul type="square"><li>{{ person.name }}</ul></li>
+				{% endfor %}
+			</div>
+
+		{% endif %}
+	</div>
+
 </div>
-
-
