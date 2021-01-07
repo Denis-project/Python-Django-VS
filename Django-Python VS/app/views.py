@@ -1,10 +1,17 @@
 """
 Definition of views.
 """
-
+from django.views.generic.list import ListView
 from datetime import datetime
 from django.shortcuts import render
+
+from django.http import HttpResponse
 from django.http import HttpRequest
+from django.http import HttpResponseRedirect
+
+from .forms import PersonForm
+from .models import Person
+
 
 def home(request):
     """Renders the home page."""
@@ -17,29 +24,28 @@ def home(request):
             'year':datetime.now().year,
         }
     )
-
-def contact(request):
-    """Renders the contact page."""
+def view(request):
+    """Renders the home page."""
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/contact.html',
+        'app/view.html',
         {
-            'title':'Contact',
-            'message':'Your contact page.',
+            'title':'View',
             'year':datetime.now().year,
         }
     )
 
-def about(request):
-    """Renders the about page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/about.html',
-        {
-            'title':'About',
-            'message':'Your application description page.',
-            'year':datetime.now().year,
-        }
-    )
+# получение данных из бд
+def view(request):
+    people = Person.objects.all()
+    return render(request, "app/view.html", {"people": people})
+ 
+# сохранение данных в бд
+def create(request):
+    if request.method == "POST":
+        tom = Person()
+        tom.name = request.POST.get("name")
+        tom.surname = request.POST.get("surname")
+        tom.save()
+    return HttpResponseRedirect("/")

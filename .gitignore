@@ -339,5 +339,11 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-#Ignor env
+#Ignore env
 env/
+
+#Ignore launch.json
+launch/
+
+#|Ignore static
+static/
